@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang ="pt-BR">
+<html>
 <head>
 <title>Lista de Tarefas:</title>
 <meta charset="utf-8">
@@ -8,28 +8,42 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <style>
-body {background-image:url("http://www.imagens.zapidi.com/wp-content/uploads/2014/06/14lL9AE-1560x1047.jpg");border-color: black;
+body {background-image:url("http://sf.co.ua/13/03/wallpaper-2643249.jpg");border-color: black;
   border-style: solid;
   border-width: 0.5px;}
 h1   {padding: 10px;color:white;font-family:arial black;text-align:center;background-color:black}
-p   {padding: 10px;color:black;font-family:arial black;text-align:center}
-h2   {padding: 10px;color:#A8DBA8;font-family:arial black;text-align:center;}
-img {div-align: center;}
+p   {padding: 10px;color:white;font-family:arial black;text-align:center;background-color:black}
 </style>
-</head>
 <body>
-<div id="tarefas">
-<h1>Lista de Tarefas</h1>
-<p><form action="tarefas.asp">
-  O que precisa ser feito?: <input type="text" name="tarefa">
-  <input type="checkbox" {{if done}}checked="checked"{{/if}}> 
-</form>
-</div id="itens">
- <footer>
-        <a class="Apagar">Apagar as completadas</a>
-        <div class="count"><span class="countVal"></span> Faltam:</div>
-      </footer>
-</p>
-
+ 
+<h1>Agenda de Tarefas</h1>
+ 
+<p>Informe algo a ser salvo</p>
+ 
+<input id="tarefa">
+<button type="button" onclick="adicionar()">Adicionar</button>
+<div id="lista"style="padding: 10px;color:white;font-family:arial black;text-align:center;">
+</div>
+ 
+<script>
+    var listatarefas = [];
+ 
+    atualizar();
+ 
+    function adicionar() {
+      listatarefas.push(document.getElementById('tarefa').value);
+      atualizar();
+    }
+ 
+    function atualizar(){
+      var text = '<ul>';
+      for (i = 0; i < listatarefas.length; i++) {
+          text += '<li>' + listatarefas[i] + '</li>';
+      }
+      text += '</ul>';
+      document.getElementById("lista").innerHTML = text;
+    }
+ 
+</script>
+ 
 </body>
-</html>
