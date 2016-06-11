@@ -14,22 +14,27 @@ body {background-image:url("http://sf.co.ua/13/03/wallpaper-2643249.jpg");border
 h1   {padding: 10px;color:white;font-family:arial black;text-align:center;background-color:black}
 p   {padding: 10px;color:white;font-family:arial black;text-align:center;background-color:black}
 </style>
-<body>
- 
+<body ng-app="Agenda" ng-controller="Ctrl">
+<div> 
 <h1>Agenda de Tarefas</h1>
  
 <p>Informe algo a ser salvo</p>
  
 <input id="tarefa">
-<button type="button" onclick="adicionar()">Adicionar</button>
+<button type="button" onclick="adicionar()">Adicionar</button><label>Escolha a data</label>
+<input type="date" id="date" ng-model="datevalue" /> 
 <div id="lista"style="padding: 10px;color:white;font-family:arial black;text-align:center;">
 </div>
- 
+     
+  
+
+
+
 <script>
     var listatarefas = [];
  
     atualizar();
- 
+
     function adicionar() {
       listatarefas.push(document.getElementById('tarefa').value);
       atualizar();
@@ -38,12 +43,13 @@ p   {padding: 10px;color:white;font-family:arial black;text-align:center;backgro
     function atualizar(){
       var text = '<ul>';
       for (i = 0; i < listatarefas.length; i++) {
-          text += '<li>' + listatarefas[i] + '</li>';
-      }
+          text += '<li>' + listatarefas[i] +'</li>';
+    }
       text += '</ul>';
       document.getElementById("lista").innerHTML = text;
     }
+
+
  
 </script>
- 
 </body>
